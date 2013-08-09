@@ -41,7 +41,8 @@
 
 			var isHistorico = false;
 			for(var m in msgs){
-				if(socket.nickname.toLocaleLowerCase() == msgs[m]._nickname.toLocaleLowerCase()){
+				
+				if(socket.nickname && socket.nickname != '' && socket.nickname.toLocaleLowerCase() == msgs[m]._nickname.toLocaleLowerCase()){
 					isHistorico = true;	
 				}
 			}

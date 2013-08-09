@@ -34,14 +34,14 @@
     message('System', e ? e : 'A unknown error occurred');
   });
 
-  function message (from, msg) {
+  function message (from, msg, time) {
     if(nickname && nickname != ''){
 	    if(from.toLocaleLowerCase() != 'me' && from.toLocaleLowerCase() != nickname.toLocaleLowerCase()){
 		newMsg = true;
-	      $('#lines').append($('<p style="font-weight: bold;font-style: italic;background-color: #E7EBD1;">').append($('<b>').text(from), msg));
+	      $('#lines').append($('<p style="font-weight: bold;font-style: italic;background-color: #E7EBD1;">').append($('<b>').text(from), msg, $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));
 	    }else{
 		newMsg = false;
-	      $('#lines').append($('<p style="font-style: italic;text-align: right;">').append($('<b>').text(from), msg));
+	      $('#lines').append($('<p style="font-style: italic;text-align: right;">').append($('<b>').text(from), msg, $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));
 	    }
     }
   }
@@ -74,7 +74,7 @@ setInterval(function(){
     });
 
     $('#send-message').submit(function () {
-      message('me', $('#message').val());
+      message('me', $('#message').val(), new Date().getTime());
       socket.emit('user message', $('#message').val());
       clear();
       $('#lines').get(0).scrollTop = 10000000;

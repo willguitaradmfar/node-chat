@@ -20,8 +20,9 @@
   io.sockets.on('connection', function (socket) {
 
     socket.on('user message', function (msg) {
-      msgs.push({_nickname:socket.nickname, _msg:msg});
-      socket.broadcast.emit('user message', socket.nickname, msg);	
+      var time = new Date().getTime();
+      msgs.push({_nickname:socket.nickname, _msg:msg, _time:time});
+      socket.broadcast.emit('user message', socket.nickname, msg, time);	
     });
 
     socket.on('nickname', function (nick, fn) {
@@ -46,7 +47,7 @@
 			}
 			for(var m in msgs){
 				if(isHistorico){
-					socket.emit('user message', (socket.nickname.toLocaleLowerCase() == msgs[m]._nickname.toLocaleLowerCase() ? 'me' : msgs[m]._nickname), msgs[m]._msg);
+					socket.emit('user message', (socket.nickname.toLocaleLowerCase() == msgs[m]._nickname.toLocaleLowerCase() ? 'me' : msgs[m]._nickname), msgs[m]._msg, msgs[m]._time);
 				}
 			}
 

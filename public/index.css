@@ -88,7 +88,7 @@ label {
   margin: 0;
   color: rgba(0, 0, 0, .5);
   font: 13px Helvetica, Arial;
-  padding: 5px 10px;
+  padding: 16px 10px;
 }
 #messages p b {
   display: inline-block;

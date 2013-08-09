@@ -33,10 +33,10 @@
   });
 
   function message (from, msg) {
-    if(from == 'me'){
-      $('#lines').append($('<p style="font-weight: bold;font-style: italic;background-color: #E7EBF2;">').append($('<b>').text(from), msg));
+    if(from != 'me'){
+      $('#lines').append($('<p style="font-weight: bold;font-style: italic">').append($('<b>').text(from), msg));
     }else{
-      $('#lines').append($('<p style="font-weight: bold;font-style: italic;background-color: #E7EBF2;text-align: right;">').append($('<b>').text(from), msg));
+      $('#lines').append($('<p style="font-weight: bold;font-style: italic;background-color: #E7EBD1;text-align: right;">').append($('<b>').text(from), msg));
     }
   }
 

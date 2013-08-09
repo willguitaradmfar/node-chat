@@ -5,7 +5,7 @@
     <script src='http://code.jquery.com/jquery-1.6.1.min.js'></script>
     <script src='/socket.io/socket.io.js'></script>
     <script src='/index.js'></script>
-    <title id="titulo">CHAT</title>
+    <title id="titulo">chat</title>
   </head>
   <body>
    <h1>:)</h1>

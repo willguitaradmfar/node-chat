@@ -4,6 +4,7 @@
   var socket = io.connect();
 
   var nickname = '';
+  var newMsg = false;
   socket.on('connect', function () {
     $('#chat').addClass('connected');
   });
@@ -36,13 +37,23 @@
   function message (from, msg) {
     if(nickname && nickname != ''){
 	    if(from.toLocaleLowerCase() != 'me' && from.toLocaleLowerCase() != nickname.toLocaleLowerCase()){
+		newMsg = true;
 	      $('#lines').append($('<p style="font-weight: bold;font-style: italic;background-color: #E7EBD1;">').append($('<b>').text(from), msg));
 	    }else{
+		newMsg = false;
 	      $('#lines').append($('<p style="font-style: italic;text-align: right;">').append($('<b>').text(from), msg));
 	    }
     }
   }
 
+setInterval(function(){
+	if(newMsg){
+		$('#titulo').html('mensag.....');
+	}else{
+		$('#titulo').html('CHAT');
+	}
+	
+}, 1000);
   //
   // dom manipulation code
   //

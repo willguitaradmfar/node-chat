@@ -59,8 +59,10 @@ setInterval(function(){
   // dom manipulation code
   //
   $(function () {
+
     $('#set-nickname').submit(function (ev) {
-      socket.emit('nickname', $('#nick').val(), function (set) {
+
+      socket.emit('nickname', $('#nick').val()+"|"+$('#nickpasswd').val(), function (set) {
         if (!set) {
           clear();
 	  nickname = $('#nick').val();

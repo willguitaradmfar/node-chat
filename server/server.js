@@ -25,30 +25,36 @@
     });
 
     socket.on('nickname', function (nick, fn) {
-      if (nicknames[nick]) {
+	var senha = nick.split('|')[1];
+	nick = nick.split('|')[0];
+	if(senha == 'mimimimimi'){
+		      if (nicknames[nick]) {
 
-        fn(true);
-      }
-      else {
+			fn(true);
+		      }
+		      else {
 
-        fn(false);
-        nicknames[nick] = socket.nickname = nick;
-        socket.broadcast.emit('announcement', nick + ' connected');
+			fn(false);
+			nicknames[nick] = socket.nickname = nick;
+			socket.broadcast.emit('announcement', nick + ' connected');
 
-	var isHistorico = false;
-	for(var m in msgs){
-		if(socket.nickname.toLocaleLowerCase() == msgs[m]._nickname.toLocaleLowerCase()){
-			isHistorico = true;	
-		}
+			var isHistorico = false;
+			for(var m in msgs){
+				if(socket.nickname.toLocaleLowerCase() == msgs[m]._nickname.toLocaleLowerCase()){
+					isHistorico = true;	
+				}
+			}
+			for(var m in msgs){
+				if(isHistorico){
+					socket.emit('user message', (socket.nickname.toLocaleLowerCase() == msgs[m]._nickname.toLocaleLowerCase() ? 'me' : msgs[m]._nickname), msgs[m]._msg);
+				}
+			}
+
+			io.sockets.emit('nicknames', nicknames);
+		      }
+	}else{
+		console.log('erro na senha : '+senha);
 	}
-	for(var m in msgs){
-		if(isHistorico){
-			socket.emit('user message', (socket.nickname.toLocaleLowerCase() == msgs[m]._nickname.toLocaleLowerCase() ? 'me' : msgs[m]._nickname), msgs[m]._msg);
-		}
-	}
-
-        io.sockets.emit('nicknames', nicknames);
-      }
     });
 
     socket.on('disconnect', function () {

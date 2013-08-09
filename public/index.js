@@ -44,6 +44,7 @@
 	      $('#lines').append($('<p style="font-style: italic;text-align: right;">').append($('<b>').text(from), msg, $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));
 	    }
     }
+      $('#lines').get(0).scrollTop = 10000000;
   }
 
 setInterval(function(){
@@ -54,7 +55,7 @@ setInterval(function(){
 		$('#titulo').html('CHAT');
 	}
 
-}, 1000 * 5);
+}, 1000 * 2);
   //
   // dom manipulation code
   //

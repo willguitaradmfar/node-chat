@@ -1,4 +1,3 @@
-
   //
   // socket.io code
   //
@@ -34,7 +33,7 @@
   });
 
   function message (from, msg) {
-    $('#lines').append($('<p>').append($('<b>').text(from), msg));
+    $('#lines').append($('<p style="font-weight: bold;font-style: italic;background-color: #E7EBF2;">').append($('<b>').text(from), msg));
   }
 
   //

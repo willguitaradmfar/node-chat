@@ -38,10 +38,10 @@
     if(nickname && nickname != ''){
 	    if(from.toLocaleLowerCase() != 'me' && from.toLocaleLowerCase() != nickname.toLocaleLowerCase()){
 		newMsg = true;
-	      $('#lines').append($('<p style="font-weight: bold;font-style: italic;background-color: #E7EBD1;">').append($('<b>').text(from), msg, $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));
+	      $('#lines').append($('<p style="font-weight: bold;font-style: italic;background-color: #E7EBD1;">').append($('<b>').text(from), filterSmile(msg), $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));
 	    }else{
 		newMsg = false;
-	      $('#lines').append($('<p style="font-style: italic;text-align: right;">').append($('<b>').text(from), msg, $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));
+	      $('#lines').append($('<p style="font-style: italic;text-align: right;">').append($('<b>').text(from), filterSmile(msg), $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));
 	    }
     }
       $('#lines').get(0).scrollTop = 10000000;
@@ -86,3 +86,15 @@ setInterval(function(){
       $('#message').val('').focus();
     };
   });
+
+
+var filterSmile = function(cmd){
+	if(cmd[0] == "$"){
+		
+		return '<img border="0" src="smiles/smile'+cmd.replace(/\$(.*)/, '$1')+'.gif" width="50"/>';	
+	}else{
+		return cmd;
+	}
+}
+
+

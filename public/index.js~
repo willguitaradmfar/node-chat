@@ -49,12 +49,12 @@
 setInterval(function(){
 	if(newMsg){
 		$('#titulo').html('mensag.....');
+		$('#lines').get(0).scrollTop = 10000000;
 	}else{
 		$('#titulo').html('CHAT');
 	}
 
-	
-}, 1000);
+}, 1000 * 3);
   //
   // dom manipulation code
   //

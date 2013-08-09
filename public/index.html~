@@ -5,7 +5,7 @@
     <script src='http://code.jquery.com/jquery-1.6.1.min.js'></script>
     <script src='/socket.io/socket.io.js'></script>
     <script src='/index.js'></script>
-    <title id="titulo">chat</title>
+    <title id="titulo">CHAT</title>
   </head>
   <body>
    <h1>:)</h1>
@@ -14,6 +14,7 @@
         <form class="wrap" id="set-nickname">
           <label for="nick">Entre com seu nome : </label>
           <input id="nick" name="nick" type="text" placeholder="aqui mozzziiii ....." />
+          <input id="nick" name="nick" type="password" placeholder="senha" />
           <p id="nickname-err">Nickname already in use</p>
         </form>
       </div>

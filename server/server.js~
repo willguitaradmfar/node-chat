@@ -21,7 +21,10 @@
 
     socket.on('user message', function (msg) {
       msgs.push({_nickname:socket.nickname, _msg:msg});
-      socket.broadcast.emit('user message', socket.nickname, msg);	
+      socket.broadcast.emit('user message', socket.nickname, msg);
+	for(var m in msgs){
+	      console.log(msgs[m]._msg + '<<<');
+	}
     });
 
     socket.on('nickname', function (nick, fn) {

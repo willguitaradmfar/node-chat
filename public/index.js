@@ -91,7 +91,7 @@ setInterval(function(){
 var filterSmile = function(cmd){
 	if(cmd[0] == "$"){
 		if(cmd[1] == "$"){
-			return '<img border="0" src="'+cmd.replace(/\$(.*)/, '$1')+'" width="70"/>';
+			return '<img border="0" src="'+cmd.replace(/\$\$(.*)/, '$1')+'" width="70"/>';
 		}
 		return '<img border="0" src="smiles/smile'+cmd.replace(/\$(.*)/, '$1')+'.gif" width="100"/>';	
 	}else{

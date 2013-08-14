@@ -16,7 +16,12 @@
   socket.on('nicknames', function (nicknames) {
     $('#nicknames').empty().append($('<span>Online: </span>'));
     for (var i in nicknames) {
-      $('#nicknames').append($('<b>').text(nicknames[i]));
+	if(nicknames[i].toLocaleLowerCase() == 'diulli')
+		$('#nicknames').append($('<b>').text(nicknames[i]).append($('<img/>').attr({'src': 'smiles/diulli.jpg', 'width' : '50'})));
+	else if(nicknames[i].toLocaleLowerCase() == 'william')
+		$('#nicknames').append($('<b>').text(nicknames[i]).append($('<img/>').attr({'src': 'smiles/william.jpg', 'width' : '50'})));
+	else
+		$('#nicknames').append($('<b>').text(nicknames[i]).append($('<img/>').attr({'src': 'smiles/anonimo.png', 'width' : '50'})));
     }
   });
 

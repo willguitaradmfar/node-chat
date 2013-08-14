@@ -17,11 +17,11 @@
     $('#nicknames').empty().append($('<span>Online: </span>'));
     for (var i in nicknames) {
 	if(nicknames[i].toLocaleLowerCase() == 'diulli')
-		$('#nicknames').append($('<b>').text(nicknames[i]).append($('<img/>').attr({'src': 'smiles/diulli.jpg', 'width' : '50'})));
+		$('#nicknames').append($('<b>').text(nicknames[i]+' ').append($('<img/>').attr({'src': 'smiles/diulli.jpg', 'width' : '50'})));
 	else if(nicknames[i].toLocaleLowerCase() == 'william')
-		$('#nicknames').append($('<b>').text(nicknames[i]).append($('<img/>').attr({'src': 'smiles/william.jpg', 'width' : '50'})));
+		$('#nicknames').append($('<b>').text(nicknames[i]+' ').append($('<img/>').attr({'src': 'smiles/william.jpg', 'width' : '50'})));
 	else
-		$('#nicknames').append($('<b>').text(nicknames[i]).append($('<img/>').attr({'src': 'smiles/anonimo.png', 'width' : '50'})));
+		$('#nicknames').append($('<b>').text(nicknames[i]+' ').append($('<img/>').attr({'src': 'smiles/anonimo.png', 'width' : '50'})));
     }
   });
 
@@ -43,7 +43,7 @@
     if(nickname && nickname != ''){
 	    if(from.toLocaleLowerCase() != 'me' && from.toLocaleLowerCase() != nickname.toLocaleLowerCase()){
 		newMsg = true;
-	      $('#lines').append($('<p style="font-weight: bold;font-style: italic;background-color: #E7EBD1;">').append($('<b>').text(from), filterSmile(msg), $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));
+	      $('#lines').append($('<p style="font-weight: bold;font-style: italic;background-color: #E7EBD1;">').append($('<img>').attr({'src': 'smiles/'+from.toLocaleLowerCase()+'.jpg', 'width' : '40'}), filterSmile('  '+msg), $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));
 	    }else{
 		newMsg = false;
 	      $('#lines').append($('<p style="font-style: italic;text-align: right;">').append($('<b>').text(from), filterSmile(msg), $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));

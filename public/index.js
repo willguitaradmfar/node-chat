@@ -49,6 +49,11 @@
 	      $('#lines').append($('<p style="font-style: italic;text-align: right;">').append($('<b>').text(from), filterSmile(msg), $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));
 	    }
     }
+    
+    var msg = $($('#lines p')[$('#lines p').length - 1]).html();
+    var msgAtual = msg;
+    $($('#lines p')[$('#lines p').length - 1]).html(filterCorrecao(msgAtual, msg));
+    
       $('#lines').get(0).scrollTop = 10000000;
   }
 
@@ -102,6 +107,25 @@ var filterSmile = function(cmd){
 	}else{
 		return cmd;
 	}
+}
+
+
+var filterCorrecao = function(msgAtual, s){
+	console.log("msgAtual = "+msgAtual);
+	console.log("s = "+s);
+	if(msgAtual.indexOf("*") != -1){
+		var s1 = msgAtual.split("*")[0];
+		console.log("s1 = "+s1);
+		var s2 = msgAtual.split("*")[1];
+		console.log("s2 = "+s2);
+		console.log("(s.indexOf(s1) != -1) = "+(s.indexOf(s1) != -1));
+		var r1 = "^(.*)";
+		var r2 = "("+s1+")";
+		var r3 = "(.*)$";
+		
+		return ((s.indexOf(s1) != -1) ? s.replace(new RegExp(r1+r2+r3), "$1"+s2+"$3") : s);
+	}
+	return "";
 }
 
 

@@ -43,16 +43,14 @@
     if(nickname && nickname != ''){
 	    if(from.toLocaleLowerCase() != 'me' && from.toLocaleLowerCase() != nickname.toLocaleLowerCase()){
 		newMsg = true;
-	      $('#lines').append($('<p style="font-weight: bold;font-style: italic;background-color: #E7EBD1;">').append($('<img>').attr({'src': 'smiles/'+from.toLocaleLowerCase()+'.jpg', 'width' : '40'}), filterSmile('  '+msg), $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));
+	      $('#lines').append($('<p style="font-weight: bold;font-style: italic;background-color: #E7EBD1;">').append($('<img>').attr({'src': 'smiles/'+from.toLocaleLowerCase()+'.jpg', 'width' : '40'}), '<div>'+filterSmile('  '+msg)+'</div>', $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));
 	    }else{
 		newMsg = false;
 	      $('#lines').append($('<p style="font-style: italic;text-align: right;">').append($('<b>').text(from), filterSmile(msg), $('<br/>'), $('<i style="text-align:right;">').text(new Date(time).toString().replace(/(.*)(\d\d:\d\d:\d\d).*/, '$2'))));
 	    }
     }
     
-    var msg = $($('#lines p')[$('#lines p').length - 1]).html();
-    var msgAtual = msg;
-    $($('#lines p')[$('#lines p').length - 1]).html(filterCorrecao(msgAtual, msg));
+
     
       $('#lines').get(0).scrollTop = 10000000;
   }
@@ -124,8 +122,9 @@ var filterCorrecao = function(msgAtual, s){
 		var r3 = "(.*)$";
 		
 		return ((s.indexOf(s1) != -1) ? s.replace(new RegExp(r1+r2+r3), "$1"+s2+"$3") : s);
-	}
-	return "";
+	}else{
+	return msgAtual;
+  }
 }
 
 

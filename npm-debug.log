@@ -1,0 +1,30 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
+2 info using npm@1.2.14
+3 info using node@v0.10.0
+4 verbose node symlink /usr/local/bin/node
+5 verbose read json /home/arabeths/git/node-chat/package.json
+6 verbose run-script [ 'prestart', 'start', 'poststart' ]
+7 info prestart test7@0.0.2
+8 info start test7@0.0.2
+9 verbose unsafe-perm in lifecycle true
+10 silly exec sh "-c" "/server/server.js"
+11 silly sh,-c,/server/server.js,/home/arabeths/git/node-chat spawning
+12 info test7@0.0.2 Failed to exec start script
+13 error test7@0.0.2 start: `/server/server.js`
+13 error `sh "-c" "/server/server.js"` failed with 127
+14 error Failed at the test7@0.0.2 start script.
+14 error This is most likely a problem with the test7 package,
+14 error not with npm itself.
+14 error Tell the author that this fails on your system:
+14 error     /server/server.js
+14 error You can get their info via:
+14 error     npm owner ls test7
+14 error There is likely additional logging output above.
+15 error System Linux 3.2.0-23-virtual
+16 error command "/usr/local/bin/node" "/usr/local/bin/npm" "start"
+17 error cwd /home/arabeths/git/node-chat
+18 error node -v v0.10.0
+19 error npm -v 1.2.14
+20 error code ELIFECYCLE
+21 verbose exit [ 1, true ]

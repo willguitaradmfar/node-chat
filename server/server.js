@@ -18,7 +18,7 @@
     nicknames = {};
 
   io.sockets.on('connection', function (socket) {
-
+    console.log('Entrou no browser em '+new Date());
     socket.on('user message', function (msg) {
       var time = new Date().getTime();
       msgs.push({_nickname:socket.nickname, _msg:msg, _time:time});
@@ -29,6 +29,7 @@
 	var senha = nick.split('|')[1];
 	nick = nick.split('|')[0];
 	if(senha == 'mimimimimi'){
+		console.log('Logou no chat em '+new Date()+' ('+nick+')');
 		      if (nicknames[nick]) {
 
 			fn(true);
